@@ -374,7 +374,7 @@ a.button2 {
 
 
 /* immagini sezione chi siamo */
-.immagini__section {
+/* .immagini__section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -382,12 +382,90 @@ a.button2 {
 
     padding: 20px;
     margin-top: 70px
-}
+} */
 
 /* immagini fatte a cerchio */
-.immagini__section img {
+/* .immagini__section img {
     clip-path: circle();
+} */
+
+/* sfumatura nera su foto */
+#product {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    margin-top: 50px;
 }
+
+.product {
+    width: 300px;
+    aspect-ratio: 3/4;
+    border-radius: 10px;
+    margin: 0 auto;
+    /* background: #fe0000; */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+
+
+}
+
+.productInfo {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 6) 0%, rgba(0, 0, 0, 0) 80%);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+
+.productInfo:hover {
+    opacity: 1;
+}
+
+.productInfo:hover .productText,
+.productInfo:hover .productButton {
+    transform: translateY(0);
+}
+
+.productText {
+    color: var(--light);
+    font-size: 25px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-20px);
+    transition: all 2s ease-in-out;
+}
+
+
+.productButton {
+    width: fit-content;
+    padding: 7px 20px;
+    margin: 20% auto;
+    border: solid white 2px;
+    color: var(--light);
+    font-size: 15px;
+    border-radius: 10px;
+    transition: all 2s ease-in-out;
+
+
+}
+
+.productButton:hover {
+    background-color: var(--light);
+    color: var(--primary);
+    border: solid rgb(0, 0, 0) 2px;
+}
+
+
+
 
 
 
@@ -429,6 +507,7 @@ p {
     flex-direction: column;
     max-width: 50%;
     justify-content: center;
+    grid-column: 1/4;
 }
 
 
@@ -440,6 +519,7 @@ immagine zoom */
     margin: auto;
     overflow: hidden;
     /* width: 100px; */
+    grid-column: 5/9;
 
 }
 
@@ -875,8 +955,21 @@ input:nth-of-type(5):checked~main#carousel {
 
 /* AUTORI */
 
-/* sfumatura sul background */
 
+
+/* non va il teto è sparitoooo */
+
+.titoloautore {
+    position: absolute;
+    color: #ffffff;
+    /* top: 30%; */
+    left: 0%;
+
+
+}
+
+
+/* sfumatura sul background */
 .overlay {
 
     background: linear-gradient(357deg, rgba(0, 0, 0, 0.10136554621848737) 0%, rgba(0, 0, 0, 1) 97%);
@@ -903,6 +996,7 @@ input:nth-of-type(5):checked~main#carousel {
 
 
 
+
 .slider {
     display: flex;
     gap: 1em;
@@ -912,7 +1006,7 @@ input:nth-of-type(5):checked~main#carousel {
     padding: 10px 0;
     scroll-snap-type: x mandatory;
     position: relative;
-    /* Per controllare la posizione dei bottoni */
+
 }
 
 
@@ -958,7 +1052,7 @@ h2 {
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0),
-            rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+            rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
 }
 
 .slider .slide .content {
@@ -990,7 +1084,7 @@ h2 {
 
 
 
-/* footer */
+/* FOOTER */
 footer {
     width: 100%;
     position: absolute;
@@ -1355,6 +1449,7 @@ hr {
     .figura__studi {
         grid-column: 2/8;
         outline: 1px solid red;
+        padding-top: 40px;
     }
 
 
@@ -1387,6 +1482,12 @@ hr {
     }
 
 
+
+    .content__rivistestudi {
+        padding-top: 40px;
+    }
+
+
 }
 
 
@@ -1414,6 +1515,47 @@ hr {
     /* versione mobile scritte più piccole */
     .scritte__cover {
         font-size: 1em;
+    }
+
+
+
+
+
+
+
+    /* effetto hover su immagini sezione chi siamo */
+    @media screen and (max-widht:400px) {
+        #product {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            ;
+        }
+
+        .product {
+            width: 90%;
+        }
+    }
+
+
+    @media screen and (max-widht:200px) {
+        .productText {
+            font-size: 15px;
+        }
+
+        .productButton {
+            font-size: 10px;
+        }
+    }
+
+
+    @media (hover:none) {
+        .productInfo {
+            opacity: 1;
+        }
+
+        .productButton,
+        .productText {
+            transform: translateY(0);
+        }
     }
 
 }
