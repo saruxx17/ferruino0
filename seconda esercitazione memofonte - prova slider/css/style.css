@@ -960,10 +960,12 @@ input:nth-of-type(5):checked~main#carousel {
 /* non va il teto è sparitoooo */
 
 .titoloautore {
-    position: absolute;
+    /* position: absolute; */
     color: #ffffff;
     /* top: 30%; */
-    left: 0%;
+    display: flex;
+    justify-content: center;
+
 
 
 }
