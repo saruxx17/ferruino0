@@ -496,16 +496,10 @@ p {
     gap: 30px;
 }
 
-
-.figura img {
-    width: 500px;
-
-}
-
 .testi {
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    /* max-width: 50%; */
     justify-content: center;
     grid-column: 1/4;
 }
@@ -521,6 +515,7 @@ immagine zoom */
     /* width: 100px; */
     grid-column: 5/9;
 
+
 }
 
 .image-box img {
@@ -530,6 +525,7 @@ immagine zoom */
     width: 100%;
     height: auto;
     transform: scale(1);
+    padding: 20px;
 }
 
 .image-box:hover img {
@@ -562,10 +558,6 @@ immagine zoom */
     flex-direction: column;
     justify-content: center;
 }
-
-
-
-
 
 .testi__studi {
 
@@ -955,135 +947,144 @@ input:nth-of-type(5):checked~main#carousel {
 
 /* AUTORI */
 
-
-
-/* non va il teto è sparitoooo */
-
-.titoloautore {
-    /* position: absolute; */
-    color: #ffffff;
-    /* top: 30%; */
-    display: flex;
-    justify-content: center;
-
-
-
-}
-
-
-/* sfumatura sul background */
-.overlay {
-
-    background: linear-gradient(357deg, rgba(0, 0, 0, 0.10136554621848737) 0%, rgba(0, 0, 0, 1) 97%);
-    /* top: 0; */
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
 .autori {
-    background: url(../img/slideshow-01-cartiglio.jpg) no-repeat center center;
-    background-size: cover;
-    height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
-
-
-    /* Evita lo scroll orizzontale nel body */
+    justify-content: center;
+    min-height: 100vh;
+    background: #f1f4fd;
 }
 
+.container2 {
+    max-width: 1200px;
+    width: 95%;
+}
 
+.slider-wrapper {
+    position: relative;
+}
 
-
-
-
-.slider {
+.slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+    z-index: 5;
+    color: #fff;
     display: flex;
-    gap: 1em;
-    margin: 0 auto;
-    width: calc(100% -2em);
+    cursor: pointer;
+    font-size: 2.2rem;
+    background: #000;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-wrapper .slide-button:hover {
+    background: #404040;
+}
+
+.slider-wrapper .slide-button#prev-slide {
+    left: -25px;
+    display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+    right: -25px;
+}
+
+.slider-wrapper .image-list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 18px;
+    font-size: 0;
+    list-style: none;
+    margin-bottom: 30px;
     overflow-x: auto;
-    padding: 10px 0;
-    scroll-snap-type: x mandatory;
-    position: relative;
-
+    scrollbar-width: none;
 }
 
-
-h2 {
-    z-index: 3;
+.slider-wrapper .image-list::-webkit-scrollbar {
+    display: none;
 }
 
-
-.slider .slide {
-    position: relative;
-    min-width: 380px;
-    border-radius: 0.8em;
-    overflow: hidden;
-    /* border: 2px solid #000000; */
-    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.5);
-    scroll-snap-align: start;
-
-}
-
-
-
-.slider .slide img {
-    width: 100%;
-    height: 100%;
+.slider-wrapper .image-list .image-item {
+    width: 325px;
+    height: 400px;
     object-fit: cover;
 }
 
-
-.slider .slide .content {
-    position: absolute;
-    bottom: 0;
-    padding: 0.8em;
-    display: grid;
-    gap: 0.25em;
-}
-
-.slider .slide::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
+.container .slider-scrollbar {
+    height: 24px;
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slider-scrollbar .scrollbar-track {
+    background: #ccc;
+    width: 100%;
+    height: 2px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+    height: 4px;
+}
+
+.slider-scrollbar .scrollbar-thumb {
+    position: absolute;
+    background: #000;
+    top: 0;
+    bottom: 0;
+    width: 50%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0),
-            rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+    cursor: grab;
+    border-radius: inherit;
 }
 
-.slider .slide .content {
-    font-size: 20px;
-    color: var(--light);
-}
-
-
-.slider::-webkit-scrollbar {
+.slider-scrollbar .scrollbar-thumb:active {
+    cursor: grabbing;
     height: 8px;
-    background: var(--light);
-    border-radius: 5px;
-
-
-
+    top: -2px;
 }
 
-.slider::-webkit-scrollbar-thumb {
-    height: 8px;
-    background: var(--primary);
-    border-radius: 5px;
-    cursor: pointer;
-    width: 20px;
-
-
+.slider-scrollbar .scrollbar-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
 }
 
+/* Styles for mobile and tablets */
+@media only screen and (max-width: 1023px) {
+    .slider-wrapper .slide-button {
+        display: none !important;
+    }
 
+    .slider-wrapper .image-list {
+        gap: 10px;
+        margin-bottom: 15px;
+        scroll-snap-type: x mandatory;
+    }
 
+    .slider-wrapper .image-list .image-item {
+        width: 280px;
+        height: 380px;
+    }
+
+    .slider-scrollbar .scrollbar-thumb {
+        width: 20%;
+    }
+}
 
 
 /* FOOTER */
@@ -1378,10 +1379,11 @@ hr {
 
     }
 
-    /*  sezione chi siamo + immagini tonde */
+    /*  sezione chi siamo + immagini hover*/
 
     .content__about {
         flex-direction: column;
+        padding: 40px;
 
     }
 
@@ -1488,6 +1490,9 @@ hr {
     .content__rivistestudi {
         padding-top: 40px;
     }
+
+
+
 
 
 }
